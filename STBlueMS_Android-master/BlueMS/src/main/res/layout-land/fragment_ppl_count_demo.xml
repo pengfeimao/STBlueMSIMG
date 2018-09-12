@@ -1,0 +1,44 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pplImage"
+        android:src="@drawable/ppl_count_icon" android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="36dp"
+        android:id="@+id/inCountLable"
+        android:text="In:"
+        android:layout_centerVertical="true"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/inCountLable"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="36dp"
+        android:id="@+id/inCount"
+        android:layout_centerVertical="true"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="36dp"
+        android:id="@+id/outCountLable"
+        android:text="Out:"
+        android:layout_centerVertical="true" android:layout_toEndOf="@+id/pplImage"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/outCountLable"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="36dp"
+        android:id="@+id/outCount"
+        android:layout_centerVertical="true"/>
+</RelativeLayout>

@@ -98,9 +98,9 @@ public class FeatureProximity extends Feature {
         if (data.length - dataOffset < 2)
             throw new IllegalArgumentException("There are no 2 bytes available to read");
         Sample temp = new Sample(timestamp,new Number[]{
-                NumberConversion.LittleEndian.bytesToUInt16(data, dataOffset)
+                NumberConversion.LittleEndian.bytesToUInt32(data, dataOffset)
         },getFieldsDesc());
-        return new ExtractResult(temp,3);
+        return new ExtractResult(temp,5);
     }//update
 
 }

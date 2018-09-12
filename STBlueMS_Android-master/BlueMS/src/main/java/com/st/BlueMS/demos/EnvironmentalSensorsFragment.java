@@ -52,6 +52,7 @@ import com.st.BlueSTSDK.Feature;
 import com.st.BlueSTSDK.Features.FeatureHumidity;
 import com.st.BlueSTSDK.Features.FeatureLuminosity;
 import com.st.BlueSTSDK.Features.FeaturePressure;
+import com.st.BlueSTSDK.Features.FeatureProximity;
 import com.st.BlueSTSDK.Features.FeatureTemperature;
 import com.st.BlueSTSDK.Node;
 import com.st.BlueSTSDK.gui.demos.DemoDescriptionAnnotation;
@@ -65,7 +66,7 @@ import java.util.List;
  */
 @DemoDescriptionAnnotation(name="Environmental",iconRes=R.drawable.demo_environmental_sensor,
     requareOneOf = {FeatureHumidity.class,FeatureLuminosity.class,FeaturePressure.class,
-            FeatureTemperature.class})
+            FeatureTemperature.class, FeatureProximity.class})
 public class EnvironmentalSensorsFragment extends DemoFragment {
 
     /**
@@ -350,6 +351,57 @@ public class EnvironmentalSensorsFragment extends DemoFragment {
             });
         }
     };
+////////////////////PROXIMITY ///////////////////////////////////////////////////////////////////
+    /**
+     * feature where we can read the Proximity value
+     */
+    private List<FeatureProximity>  mProximity;
+    /**
+     * label where we show the Proximity value
+     */
+    private TextView mProximityText;
+    /**
+     * image where we will show the Proximity image
+     */
+    private ImageView mProximityImage;
+
+    /**
+     * object that extract the Proximity from a feature sample
+     */
+    private final static ExtractDataFunction sExtractDataProx  = new ExtractDataFunction(){
+        public float getData(Feature.Sample s){
+            return FeatureProximity.getProximityDistance(s);
+        }//getData
+    };
+
+    /**
+     * listener for the Proximity feature, it will update the Proximity value and change the image
+     * value for the {@code mProximityImage} image
+     */
+    private final Feature.FeatureListener mProximityListener = new Feature.FeatureListener() {
+
+        @Override
+        public void onUpdate(Feature f,Feature.Sample sample) {
+            float data[] =extractData(mProximity, sExtractDataProx);
+            int outCount = (int)data[0] & 0xFFFF;
+            int inCount = (int)data[0] >>> 16;
+
+            final String dataString = Integer.toString(inCount) + " : " + Integer.toString(outCount);
+            updateGui(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        mProximityText.setText(dataString);
+                    } catch (NullPointerException e) {
+                        //this exception can happen when the task is run after the fragment is
+                        // destroyed
+                    }//try-catch
+
+                }
+            });
+        }
+    };
+    //////////////////// END PROXIMITY ///////////////////////////////////////////////////////////////////
 
     public EnvironmentalSensorsFragment() {
         // Required empty public constructor
@@ -373,6 +425,9 @@ public class EnvironmentalSensorsFragment extends DemoFragment {
 
         mLuminosityText = (TextView) root.findViewById(R.id.luminosityText);
         mLuminosityImage = (ImageView) root.findViewById(R.id.luminosityImage);
+
+        mProximityText = (TextView) root.findViewById(R.id.proximityText);
+        mProximityImage = (ImageView) root.findViewById(R.id.proximityImage);
 
         return root;
     }
@@ -460,6 +515,23 @@ public class EnvironmentalSensorsFragment extends DemoFragment {
 
         }
 
+        mProximity = node.getFeatures(FeatureProximity.class);
+        if(!mProximity.isEmpty()) {
+            View.OnClickListener forceUpdate = new ForceUpdateFeature(mProximity);
+            mProximityImage.setOnClickListener(forceUpdate);
+            for (Feature f : mProximity) {
+                f.addFeatureListener(mProximityListener);
+                node.enableNotification(f);
+            }//for
+        }else{
+            updateGui(new Runnable() {
+                @Override
+                public void run() {
+                    mProximityImage.setImageResource(R.drawable.mems_gesture_glance);
+                }
+            });
+        }
+
     }//enableNeededNotification
 
 
@@ -498,6 +570,14 @@ public class EnvironmentalSensorsFragment extends DemoFragment {
             mLuminosityImage.setOnClickListener(null);
             for (Feature f : mLuminosity) {
                 f.removeFeatureListener(mLuminosityListener);
+                node.disableNotification(f);
+            }//for
+        }
+
+        if(mProximity!=null && !mProximity.isEmpty()) {
+            mProximityImage.setOnClickListener(null);
+            for (Feature f : mProximity) {
+                f.removeFeatureListener(mProximityListener);
                 node.disableNotification(f);
             }//for
         }

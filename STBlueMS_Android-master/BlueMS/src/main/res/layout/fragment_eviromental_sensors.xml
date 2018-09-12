@@ -36,47 +36,50 @@
   ~ OF SUCH DAMAGE.
   -->
 
-<android.support.v7.widget.GridLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:grid="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    grid:columnCount="2"
-    grid:orientation="vertical" grid:rowCount="2"
+    android:layout_height="wrap_content"
     tools:context="com.st.BlueMS.demos.EnvironmentalSensorsFragment">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical"
-        grid:layout_column="0"
-        grid:layout_columnWeight="1"
-        grid:layout_row="0"
-        grid:layout_rowWeight="1">
-
-        <ImageView
-            android:id="@+id/thermometerImage"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="2"
-            android:src="@drawable/temperature_icon" />
-
-        <TextView
-            android:id="@+id/thermometerText"
+        <android.support.v7.widget.GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center"
-            android:text="@string/sensorNotAvailable"
-            android:textSize="22sp"/>
+            grid:columnCount="2"
+            grid:orientation="vertical" grid:rowCount="3">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                grid:layout_column="0"
+                grid:layout_columnWeight="1"
+                grid:layout_row="0"
+                grid:layout_rowWeight="1">
 
-    </LinearLayout>
+                <ImageView
+                    android:id="@+id/thermometerImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="2"
+                    android:src="@drawable/temperature_icon" />
+
+                <TextView
+                    android:id="@+id/thermometerText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:text="@string/sensorNotAvailable"
+                    android:textSize="22sp" />
+
+            </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -176,4 +179,36 @@
 
     </LinearLayout>
 
-</android.support.v7.widget.GridLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            grid:layout_column="0"
+            grid:layout_columnWeight="1"
+            grid:layout_row="2"
+            grid:layout_rowWeight="1">
+
+            <ImageView
+                android:id="@+id/proximityImage"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="2"
+                android:src="@drawable/ppl_count_icon"/>
+
+            <TextView
+                android:id="@+id/proximityText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="@string/sensorNotAvailable"
+                android:textSize="22sp"/>
+
+        </LinearLayout>
+        </android.support.v7.widget.GridLayout>
+</ScrollView>

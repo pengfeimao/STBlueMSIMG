@@ -54,6 +54,7 @@ import com.st.BlueMS.demos.NodeStatusFragment;
 import com.st.BlueMS.demos.PedometerFragment;
 import com.st.BlueMS.demos.PlotFeatureFragment;
 import com.st.BlueMS.demos.ProximityGestureRecognitionFragment;
+import com.st.BlueMS.demos.ProximityPplCountFragment;
 import com.st.BlueMS.demos.SwitchFragment;
 import com.st.BlueSTSDK.Node;
 import com.st.BlueSTSDK.gui.demos.DemoFragment;
@@ -100,6 +101,7 @@ public class DemosActivity extends com.st.BlueSTSDK.gui.DemosActivity {
             PedometerFragment.class,
             AccEventFragment.class,
             SwitchFragment.class,
+            ProximityPplCountFragment.class,
             HearRateFragment.class,
             //MultipleLogFragment.class,
             NodeStatusFragment.class,

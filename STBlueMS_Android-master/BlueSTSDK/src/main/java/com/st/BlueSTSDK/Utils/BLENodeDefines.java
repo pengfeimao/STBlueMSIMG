@@ -307,6 +307,7 @@ public class BLENodeDefines {
             SensorTile_DeviceFeatures.put(0x00040000, FeatureTemperature.class);
             SensorTile_DeviceFeatures.put(0x00020000, FeatureBattery.class);
             SensorTile_DeviceFeatures.put(0x00010000, FeatureTemperature.class);
+            SensorTile_DeviceFeatures.put(0x02000000, FeatureProximity.class);//ppl Count
             SensorTile_DeviceFeatures.put(0x00000400, FeatureAccelerationEvent.class);
             SensorTile_DeviceFeatures.put(0x00000100, FeatureMemsSensorFusionCompact.class);
             SensorTile_DeviceFeatures.put(0x00000040, FeatureCompass.class);

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pplImage" android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" android:src="@drawable/ppl_count_icon"/>
+        <Space
+            android:id="@+id/spacer"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_below="@+id/pplImage" android:layout_centerHorizontal="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="36dp"
+            android:id="@+id/inCountLable"
+            android:text="In:"
+            android:layout_below="@+id/pplImage"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@id/spacer"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="36dp"
+            android:id="@+id/inCount"
+            android:layout_below="@+id/inCountLable"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@id/spacer"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="36dp"
+            android:id="@+id/outCountLable"
+            android:text="Out:"
+            android:layout_below="@+id/pplImage"
+            android:layout_toEndOf="@id/spacer"
+            android:layout_alignParentEnd="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="36dp"
+            android:id="@+id/outCount"
+            android:layout_below="@+id/outCountLable"
+            android:layout_toEndOf="@id/spacer"
+            android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+</RelativeLayout>
